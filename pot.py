@@ -19,7 +19,7 @@ def main():
     ads.gain = 1
 
     # A0 pinini analog giriş olarak ayarla
-    chan = AnalogIn(ads, ADS.P0)
+    chan = AnalogIn(ads, 0)
 
     # Gerilim Bölücü Çarpanı (100k ve 33k dirençler için)
     # Formül: (100 + 33) / 33 = 4.0303

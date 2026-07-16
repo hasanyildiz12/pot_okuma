@@ -45,7 +45,7 @@ def main():
                 durum = "Connected. The EV is connected to the charger, ready for communication, but not yet charging."
             elif 5.0 <= gercek_cp_voltaj <= 7.0:
                 durum = "Active. The EV is actively charging with no ventilation required.)"
-            elif 4 <= gercek_cp_voltaj <= 2:
+            elif 2 <= gercek_cp_voltaj <= 4:
                 durum = "Active with Ventilation. The EV is actively charging, but requires the charging area to be ventilated.)"
             elif gercek_cp_voltaj < 1:
                 durum = "Fault. Indicates an error on either the charger (EVSE) or vehicle (EV) side.)"

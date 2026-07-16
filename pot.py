@@ -27,8 +27,6 @@ def main():
 
     print("\n" + "="*50)
     print("EV Şarj İstasyonu CP Sinyal Simülatörü")
-    print("Potansiyometreyi çevirerek durumları test edin.")
-    print("Çıkış için CTRL+C")
     print("="*50 + "\n")
 
     try:
@@ -41,12 +39,16 @@ def main():
             
             # Durum Makinesi (State Machine) Mantığı
             durum = "BİLİNMİYOR"
-            if gercek_cp_voltaj >= 11.0:
-                durum = "DURUM A (Kablo Boşta - 12V)"
-            elif 8.0 <= gercek_cp_voltaj <= 10.0:
-                durum = "DURUM B (Araç Bağlandı - 9V)"
+            if gercek_cp_voltaj >= 12.0:
+                durum = "DURUM A (Standby. The EV is not connected or not detected by the charger.)"
+            elif 7 <= gercek_cp_voltaj <= 11.0:
+                durum = "Connected. The EV is connected to the charger, ready for communication, but not yet charging."
             elif 5.0 <= gercek_cp_voltaj <= 7.0:
-                durum = "DURUM C (Şarj İstiyor - 6V)"
+                durum = "Active. The EV is actively charging with no ventilation required.)"
+            elif 4 <= gercek_cp_voltaj <= 2:
+                durum = "Active with Ventilation. The EV is actively charging, but requires the charging area to be ventilated.)"
+            elif gercek_cp_voltaj < 1:
+                durum = "Fault. Indicates an error on either the charger (EVSE) or vehicle (EV) side.)"
                 
             # Sonuçları ekrana formatlı şekilde yazdır
             print(f"ADC Pini: {adc_voltaj:.2f} V  |  Gerçek Hat: {gercek_cp_voltaj:.2f} V  |  Durum: {durum}")

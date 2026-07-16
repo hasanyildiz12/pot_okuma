@@ -39,9 +39,9 @@ def main():
             
             # Durum Makinesi (State Machine) Mantığı
             durum = "BİLİNMİYOR"
-            if gercek_cp_voltaj >= 12.0:
+            if gercek_cp_voltaj >= 11.1:
                 durum = "DURUM A (Standby. The EV is not connected or not detected by the charger.)"
-            elif 7 <= gercek_cp_voltaj <= 11.0:
+            elif 7 <= gercek_cp_voltaj <= 11:
                 durum = "Connected. The EV is connected to the charger, ready for communication, but not yet charging."
             elif 5.0 <= gercek_cp_voltaj <= 7.0:
                 durum = "Active. The EV is actively charging with no ventilation required.)"
